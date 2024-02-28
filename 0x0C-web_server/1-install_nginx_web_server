@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Bash script to install and configure Nginx on Ubuntu
+# Update package list and install Nginx
+
+apt-get update
+apt-get -y install nginx
+ufw allow 'Nginx HTTP'
+# create an index.html in www.
+echo "Hello World!" > /var/www/html/index.html
+service nginx start
