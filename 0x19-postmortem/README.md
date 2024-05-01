@@ -1,68 +1,28 @@
-0x19. Postmortem
-DevOps SysAdmin
+***** Post-mortem report: Web stack failure incident ****
+ 
+* Summary of the incident:
+Duration: The outage occurred from April 17, 2024 at 11:00 p.m. to April 18, 2024 at 3:00 a.m. (UTC).
+Impact: The web application experienced complete downtime, affecting 82% of our user base.
+Root Cause: The outage was caused by a misconfiguration in the load balancer settings.
+ 
+* Timeline:
+- 11:03 p.m.: Issue detected via automated monitoring alerts indicating high server response time.
+- 11:07 p.m.: engineers were informed and immediately began the investigation.
+Actions Taken: The initial investigation focused on server logs and application code, assuming a potential software bug.
+Deceptive paths: Several hours spent debugging the application code, leading to no results.
+- 12:15 a.m.: The incident was reported to infrastructure officials.
+- 01:30: After verification, a misconfiguration of the load balancer identified as the root cause.
+ 
+*Root cause and resolution:
+Root Cause: Misconfiguration of load balancer settings resulted in uneven distribution of traffic, causing overload on some servers.
+Resolution: Load balancer settings were fixed and traffic was distributed evenly between servers.
+ 
+* Corrective and preventive measures:
+- Run automated tests for load balancer configurations.
+- Improve monitoring systems to detect load imbalances.
+* Tasks:
+- Perform a complete review of load balancer configurations.
+- Develop automated tests to verify the functionality of the load balancer.
+- Improve monitoring alerts for load balancer performance metrics.
+This incident highlighted the importance of thorough and ongoing configuration management and monitoring to maintain service availability. By implementing the corrective and preventive measures described, we also aim to prevent similar incidents in the future and ensure the reliability of our web stack.
 
-By Sylvain Kalache
-
-Concepts:
-For this project, students are expected to look at this concept:
-
-On-call
-Background Context:
-
-
-Any software system will eventually fail, and that failure can come stem from a wide range of possible factors: bugs, traffic spikes, security issues, hardware failures, natural disasters, human error... Failing is normal and failing is actually a great opportunity to learn and improve. Any great Software Engineer must learn from his/her mistakes to make sure that they won't happen again. Failing is fine, but failing twice because of the same issue is not.
-
-A postmortem is a tool widely used in the tech industry. After any outage, the team(s) in charge of the system will write a summary that has 2 main goals:
-
-To provide the rest of the company's employees easy access to information detailing the cause of the outage. Often outages can have a huge impact on a company, so managers and executives have to understand what happened and how it will impact their work.
-And to ensure that the root cause(s) of the outage has been discovered and that measures are taken to make sure it will be fixed.
-Resources:
-Read or watch:
-
-Incident Report, also referred to as a Postmortem
-How to run a Postmortem
-Tasks:
-0. My first postmortem
-
-
-Using one of the web stack debugging project issue or an outage you have personally face, write a postmortem. Most of you will never have faced an outage, so just get creative and invent your own :)
-
-Requirements:
-
-Issue Summary (that is often what executives will read) must contain:
-
-duration of the outage with start and end times (including timezone)
-what was the impact (what service was down/slow? What were user experiencing? How many % of the users were affected?)
-what was the root cause
-Timeline (format bullet point, format: time - keep it short, 1 or 2 sentences) must contain:
-
-when was the issue detected
-how was the issue detected (monitoring alert, an engineer noticed something, a customer complained...)
-actions taken (what parts of the system were investigated, what were the assumption on the root cause of the issue)
-misleading investigation/debugging paths that were taken
-which team/individuals was the incident escalated to
-how the incident was resolved
-Root cause and resolution must contain:
-
-explain in detail what was causing the issue
-explain in detail how the issue was fixed
-Corrective and preventative measures must contain:
-
-what are the things that can be improved/fixed (broadly speaking)
-a list of tasks to address the issue (be very specific, like a TODO, example: patch Nginx server, add monitoring on server memory...)
-Be brief and straight to the point, between 400 to 600 words
-
-While postmortem format can vary, stick to this one so that you can get properly reviewed by your peers.
-
-Please, remember that these blogs must be written in English to further your technical ability in a variety of settings.
-
-1. Make people want to read your postmortem
-We are constantly stormed by a quantity of information, it's tough to get people to read you.
-
-Make your post-mortem attractive by adding humour, a pretty diagram or anything that would catch your audience attention.
-
-Please, remember that these blogs must be written in English to further your technical ability in a variety of settings.
-
-Author 📑 :
-
-Mohamed
